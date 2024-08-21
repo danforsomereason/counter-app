@@ -1,24 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
 
-function App() {
+// destructure props
+// props are an object that belongs to the component
+// think person.name - you're accessing properties of an object 
+
+
+function App(props) {
+  const[currentCount, setCurrentCount] = useState(props.startingCount)
+ 
+  const handleAdd = () => {
+    // 1. Increase the count by 1
+    setCurrentCount(currentCount + 1)   
+    console.log(this)  
+  }
+  function handleSubtract() {
+    // 1. Decrease count by 1
+    setCurrentCount(currentCount - 1)
+    console.log(this)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>{currentCount}</h1>
+      <button onClick={handleAdd}>Add</button>
+      <button onClick={handleSubtract}>Subtract</button>
+    </>
   );
 }
 
